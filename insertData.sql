@@ -18,19 +18,19 @@ VALUES
   ('Ethan Cole'),
   ('Grace Nakamura');
 
-INSERT INTO actors (actor_name, agent_id)
+INSERT INTO actors (actor_name)
 VALUES
-  ('Christian Bale', 1),
-  ('Michael Caine', 2),
-  ('Liam Neeson', 3),
-  ('Katie Holmes', 4),
-  ('Gary Oldman', 5),
-  ('Heath Ledger', 1),
-  ('Aaron Eckhart', 2),
-  ('Maggie Gyllenhaal', 3),
-  ('Tom Hardy', 4),
-  ('Joseph Gordon-Levitt', 5),
-  ('Anne Hathaway', 1);  
+  ('Christian Bale'),
+  ('Michael Caine'),
+  ('Liam Neeson'),
+  ('Katie Holmes'),
+  ('Gary Oldman'),
+  ('Heath Ledger'),
+  ('Aaron Eckhart'),
+  ('Maggie Gyllenhaal'),
+  ('Tom Hardy'),
+  ('Joseph Gordon-Levitt'),
+  ('Anne Hathaway');  
 
   INSERT INTO castings (movie_id, actor_id, character_name)
 VALUES
@@ -95,6 +95,16 @@ VALUES
    'Selina Kyle');
 
 INSERT INTO representing (agent_id, actor_id)
-SELECT agent_id, id
-FROM actors
-WHERE agent_id IS NOT NULL;
+VALUES
+  (1, (SELECT id FROM actors WHERE actor_name = 'Christian Bale')),
+  (2, (SELECT id FROM actors WHERE actor_name = 'Michael Caine')),
+  (3, (SELECT id FROM actors WHERE actor_name = 'Liam Neeson')),
+  (4, (SELECT id FROM actors WHERE actor_name = 'Katie Holmes')),
+  (5, (SELECT id FROM actors WHERE actor_name = 'Gary Oldman')),
+  (1, (SELECT id FROM actors WHERE actor_name = 'Heath Ledger')),
+  (2, (SELECT id FROM actors WHERE actor_name = 'Aaron Eckhart')),
+  (3, (SELECT id FROM actors WHERE actor_name = 'Maggie Gyllenhaal')),
+  (4, (SELECT id FROM actors WHERE actor_name = 'Tom Hardy')),
+  (5, (SELECT id FROM actors WHERE actor_name = 'Joseph Gordon-Levitt')),
+  (1, (SELECT id FROM actors WHERE actor_name = 'Anne Hathaway'));
+
