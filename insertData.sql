@@ -1,10 +1,17 @@
+DELETE FROM representing;
+DELETE FROM castings;
+DELETE FROM movies;
+DELETE FROM actors;
+DELETE FROM studios;
+DELETE FROM agents;
+
 INSERT INTO studios (studio_name)
 VALUES
   ('Warner Bros.'),
   ('Universal Pictures'),
   ('Paramount Pictures');
 
-INSERT INTO movies (title, year_released, MAPP_rating, studio_id)
+INSERT INTO movies (title, year_released, MPAA_rating, studio_id)
 VALUES
   ('Batman Begins', '2005', 'PG-13', (SELECT id FROM studios WHERE studio_name = 'Warner Bros.')),
   ('The Dark Knight', '2008', 'PG-13', (SELECT id FROM studios WHERE studio_name = 'Warner Bros.')),

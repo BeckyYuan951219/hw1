@@ -1,5 +1,6 @@
 -- Drops existing tables, so we start fresh with each
 -- run of this script
+
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS studios;
 DROP TABLE IF EXISTS actors;
@@ -7,11 +8,14 @@ DROP TABLE IF EXISTS castings;
 DROP TABLE IF EXISTS agents;
 DROP TABLE IF EXISTS representing;
 
+
+
+
 CREATE TABLE movies (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT,
-  year_released TEXT,
-  MAPP_rating TEXT,
+  year_released INTEGER,
+  MPAA_rating TEXT,
   studio_id INTEGER
 );
 
@@ -22,15 +26,15 @@ CREATE TABLE studios (
 
 CREATE TABLE actors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  actor_name TEXT,
-  agent_id INTEGER
+  actor_name TEXT
 );
 
 CREATE TABLE castings (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_id INTEGER,
   actor_id INTEGER,
-  character_name TEXT
+  character_name TEXT,
+  UNIQUE(movie_id, actor_id)
 );
 
 CREATE TABLE agents (
@@ -41,6 +45,7 @@ CREATE TABLE agents (
 CREATE TABLE representing (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   agent_id INTEGER,
-  actor_id INTEGER
+  actor_id INTEGER,
+  UNIQUE(actor_id)
 );
 

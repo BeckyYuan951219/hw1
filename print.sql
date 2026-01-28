@@ -6,7 +6,7 @@
 .print "======"
 .print ""
 
-SELECT m.title, m.year_released, m.MAPP_rating, s.studio_name
+SELECT m.title, m.year_released, m.MPAA_rating, s.studio_name
 FROM movies m
 LEFT JOIN studios s
 ON m.studio_id = s.id;
